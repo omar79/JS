@@ -1,0 +1,74 @@
+
+	<html>
+
+<head>
+	<title>JS Scroll</title>
+	<style>
+		body {
+			background-color:black;
+			font-family: monospace;
+			color:white;
+			font-size:50px;
+			text-align: center;
+			margin-top:20%;
+		}
+		#magic{
+			color: #777;
+			border-right: 1px solid #777;
+			padding-right: 7px;
+			display: inline;
+		}
+	</style>
+</head>
+
+<body>
+
+	Coding is <div id="magic"></div>
+
+	<script>
+		( function() {
+		var words = ["fun ", "exciting ", "about not giving up ", "being helpful ", "being open ", "what I learned at CodingDojo! "],
+		el = document.getElementById('magic'),
+		word_counter = 0,
+		character_counter = 0;
+
+
+		function updateText()
+		{
+			el.innerHTML = el.innerHTML+words[word_counter][character_counter++];
+			if(character_counter == words[word_counter].length)
+			{
+				word_counter++; 	//choose a different word
+				character_counter = 0;	//start over with the first character of the word
+				el.innerHTML = '';  //set the html to be blank
+				//if we're displaying the last word, go back to the first word
+				if(word_counter == words.length)
+					word_counter = 0;
+			}
+		}
+
+		setInterval(updateText,250);
+	}());
+
+	</script>
+
+</body>
+
+</html>
+
+
+
+	<!-- 	2) There is a bug where the space in the words do not appear correctly. For example for the word "being helpful" when it shows "being " after showing "being" the space should make the right border/cursor move a little bit to the right (to account for the space being entered by the user) yet it doesn't work correctly. Please fix this error.
+	// Hint: You may want to use the code below to represent space
+	// DON'T FORGET TO ADD "&" SYMBOL BEFORE IT
+	nbsp;
+  
+	3) The current code is creating lots of global variables; we don' t like this. Use what you learned about immediate functions to wrap all of this code in a single immediate function so that you don't introduce any global variables. Once done, push this to your github and show friends! Check whether the variables created (e.g. el, word_counter, etc) are not defined. Try to console.log these variables outside your immediate function).
+
+	 - ( function() { //code } ) ();
+	 - 	You could also pass arguments to an immediate function by doing something like: ( function(arg1, arg2) { 	//code } ) (anArg, anotherArg);
+
+
+	4) Submit a pull request through GitHub. :)
+
+	5) Put this on your GitHub; also upload a simple txt file with a link to your GitHub project for us to review -->
